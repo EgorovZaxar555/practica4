@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Список из API</title>
+</head>
+<body>
+    <h1>Данные из API</h1>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% elif women %}
+        <table border="1" cellpadding="8">
+            <thead>
+                <tr>
+                    <th>Название (title)</th>
+                    <th>ID категории (cat_id)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in women %}
+                <tr>
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.cat_id|default:"Без категории" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Список пуст.</p>
+    {% endif %}
+</body>
+</html>
